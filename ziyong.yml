@@ -1,6 +1,6 @@
 [custom]
-surge_ruleset=🚀 手动切换,DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-surge_ruleset=🚀 手动切换,DOMAIN-SUFFIX,services.googleapis.cn
+surge_ruleset=🚀 手动切换,[]DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+surge_ruleset=🚀 手动切换,[]DOMAIN-SUFFIX,services.googleapis.cn
 surge_ruleset=🚀 手动切换,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleCNProxyIP.list
 
 
