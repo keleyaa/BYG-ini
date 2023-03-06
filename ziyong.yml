@@ -3,7 +3,7 @@ ruleset=!!import:snippets/rulesets.txt
 
 
 
-custom_proxy_group=!!import:snippets/groups.txt
+custom_proxy_group=!!import:snippets/groups_forcerule.txt
 
 
 
