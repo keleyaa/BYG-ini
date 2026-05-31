@@ -14,21 +14,32 @@
         "tag": "remote",
         "address": "https://1.1.1.1/dns-query",
         "detour": "🚀 手动切换"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
       }
     ],
     "rules": [
       {
-        "domain_suffix": [
-          "cn"
+        "rule_set": [
+          "skk-lan",
+          "dw-private",
+          "dw-cn"
         ],
         "server": "local"
+      },
+      {
+        "rule_set": "dw-ads",
+        "server": "block"
       },
       {
         "geoip": "cn",
         "server": "local"
       }
     ],
-    "final": "remote"
+    "final": "remote",
+    "strategy": "prefer_ipv4"
   },
   "inbounds": [
     {
@@ -42,7 +53,9 @@
     {
       "type": "tun",
       "tag": "tun-in",
-      "address": "172.19.0.1/30",
+      "address": [
+        "172.19.0.1/30"
+      ],
       "auto_route": true,
       "strict_route": true,
       "sniff": true,
@@ -68,7 +81,8 @@
         "🇯🇵 日本节点",
         "🇺🇲 美国节点",
         "🇰🇷 韩国节点",
-        "🏴 其他节点"
+        "🏴 其他节点",
+        "🚀 手动切换"
       ]
     },
     {
@@ -76,6 +90,12 @@
       "tag": "🌍 国外媒体",
       "outbounds": [
         "🚀 手动切换",
+        "📹 油管视频",
+        "🎥 奈飞视频",
+        "🎥 迪士尼Plus",
+        "🎬 Prime Video",
+        "🍎 Apple TV+",
+        "🎶 Spotify",
         "🇭🇰 香港节点",
         "🇹🇼 台湾节点",
         "🇸🇬 新加坡节点",
@@ -87,10 +107,83 @@
     },
     {
       "type": "selector",
+      "tag": "📹 油管视频",
+      "outbounds": [
+        "🚀 手动切换",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🎥 奈飞视频",
+      "outbounds": [
+        "🚀 手动切换",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🎥 迪士尼Plus",
+      "outbounds": [
+        "🚀 手动切换",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🎬 Prime Video",
+      "outbounds": [
+        "🚀 手动切换",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🍎 Apple TV+",
+      "outbounds": [
+        "🚀 手动切换",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🎶 Spotify",
+      "outbounds": [
+        "🚀 手动切换",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "type": "selector",
       "tag": "🎮 游戏平台",
       "outbounds": [
         "direct",
-        "🎮 游戏节点"
+        "🎮 游戏节点",
+        "🚀 手动切换"
       ]
     },
     {
@@ -103,7 +196,8 @@
         "🇯🇵 日本节点",
         "🇺🇲 美国节点",
         "🇰🇷 韩国节点",
-        "🏴 其他节点"
+        "🏴 其他节点",
+        "🚀 手动切换"
       ]
     },
     {
@@ -112,7 +206,8 @@
       "outbounds": [
         "direct",
         "🇹🇼 台湾节点",
-        "🇺🇲 美国节点"
+        "🇺🇲 美国节点",
+        "🚀 手动切换"
       ]
     },
     {
@@ -180,6 +275,7 @@
       "tag": "🍎 苹果服务",
       "outbounds": [
         "direct",
+        "🚀 手动切换",
         "🇭🇰 香港节点",
         "🇹🇼 台湾节点",
         "🇸🇬 新加坡节点",
@@ -199,7 +295,19 @@
         "🇯🇵 日本节点",
         "🇺🇲 美国节点",
         "🇰🇷 韩国节点",
-        "🏴 其他节点"
+        "🏴 其他节点",
+        "🚀 手动切换"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🤖 AI合集",
+      "outbounds": [
+        "🤖 Chatgpt",
+        "🚀 手动切换",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
       ]
     },
     {
@@ -213,7 +321,29 @@
         "🇯🇵 日本节点",
         "🇺🇲 美国节点",
         "🇰🇷 韩国节点",
-        "🏴 其他节点"
+        "🏴 其他节点",
+        "🚀 手动切换"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "📈 网络测试",
+      "outbounds": [
+        "direct",
+        "🚀 手动切换",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇸🇬 新加坡节点",
+        "🇯🇵 日本节点",
+        "🇺🇲 美国节点"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "🛑 广告拦截",
+      "outbounds": [
+        "block",
+        "direct"
       ]
     },
     {
@@ -221,6 +351,7 @@
       "tag": "🎯 国内网络",
       "outbounds": [
         "direct",
+        "🚀 手动切换",
         "🇭🇰 香港节点",
         "🇹🇼 台湾节点",
         "🇸🇬 新加坡节点",
@@ -235,8 +366,8 @@
       "type": "selector",
       "tag": "🐟 漏网之鱼",
       "outbounds": [
-        "direct",
         "🚀 手动切换",
+        "direct",
         "🇭🇰 香港节点",
         "🇹🇼 台湾节点",
         "🇸🇬 新加坡节点",
@@ -244,7 +375,8 @@
         "🇺🇲 美国节点",
         "🇰🇷 韩国节点",
         "🏴 其他节点"
-      ]
+      ],
+      "default": "🚀 手动切换"
     },
     {
       "type": "selector",
@@ -303,14 +435,6 @@
       ]
     },
     {
-      "type": "selector",
-      "tag": "🤖 AI合集",
-      "outbounds": [
-        "🤖 Chatgpt",
-        "🚀 手动切换"
-      ]
-    },
-    {
       "type": "direct",
       "tag": "direct"
     },
@@ -323,379 +447,491 @@
     "rule_set": [
       {
         "type": "remote",
-        "tag": "01-REJECT",
+        "tag": "skk-reject-drop",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/reject-drop.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "02-REJECT",
+        "tag": "skk-reject-non-ip",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/reject.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "03-REJECT",
+        "tag": "skk-reject-domainset",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/domainset/reject.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "04-REJECT",
+        "tag": "skk-reject-ip",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/ip/reject.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "05-REJECT",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/sogouinput.json",
-        "download_detour": "🚀 手动切换"
-      },
-      {
-        "type": "remote",
-        "tag": "06-ruleset-6",
+        "tag": "skk-lan",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/lan.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "07-ruleset-7",
+        "tag": "dw-private",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "dw-privateip",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/privateip.srs",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "dw-cn",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "dw-cnip",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "dw-ads",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-telegram-domain",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/telegram.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "08-ruleset-8",
+        "tag": "skk-telegram-ip",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/ip/telegram.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "09-ruleset-9",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_us.json",
+        "tag": "dw-telegramip",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "10-ruleset-10",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/stream_us.json",
+        "tag": "dw-ai",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ai.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "11-ruleset-11",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_eu.json",
+        "tag": "dw-microsoft-cn",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/microsoft-cn.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "12-ruleset-12",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/stream_eu.json",
+        "tag": "dw-apple-cn",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/apple-cn.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "13-ruleset-13",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_jp.json",
+        "tag": "dw-google-cn",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/google-cn.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "14-ruleset-14",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/stream_jp.json",
+        "tag": "dw-youtube",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/youtube.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "15-ruleset-15",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_kr.json",
+        "tag": "dw-netflix",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/netflix.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "16-ruleset-16",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/stream_kr.json",
+        "tag": "dw-netflixip",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/netflixip.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "17-ruleset-17",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_hk.json",
+        "tag": "dw-disney",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/disney.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "18-ruleset-18",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/stream_hk.json",
+        "tag": "dw-primevideo",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/primevideo.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "19-ruleset-19",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_tw.json",
+        "tag": "dw-appletv",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/appletv.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "20-ruleset-20",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/stream_tw.json",
+        "tag": "dw-spotify",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/spotify.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "21-ruleset-21",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream.json",
+        "tag": "dw-tiktok",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/tiktok.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "22-ruleset-22",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/stream.json",
+        "tag": "dw-media",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/media.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "23-ruleset-23",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/microsoft_cdn.json",
+        "tag": "dw-mediaip",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/mediaip.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "24-ruleset-24",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/microsoft.json",
+        "tag": "dw-games",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "25-AI",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/ai.json",
+        "tag": "dw-games-cn",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games-cn.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "26-ruleset-26",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/apple_cdn.json",
+        "tag": "dw-networktest",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/networktest.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "27-ruleset-27",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/icloud_private_relay.json",
+        "tag": "dw-proxy",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/proxy.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "28-ruleset-28",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/apple_services.json",
+        "tag": "dw-gfw",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/gfw.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "29-ruleset-29",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/cdn.json",
+        "tag": "dw-tld-proxy",
+        "format": "binary",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/tld-proxy.srs",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "30-ruleset-30",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/domainset/download.json",
-        "download_detour": "🚀 手动切换"
-      },
-      {
-        "type": "remote",
-        "tag": "31-ruleset-31",
-        "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/download.json",
-        "download_detour": "🚀 手动切换"
-      },
-      {
-        "type": "remote",
-        "tag": "32-ruleset-32",
+        "tag": "skk-global",
         "format": "source",
         "url": "https://ruleset.skk.moe/sing-box/non_ip/global.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "33-ruleset-33",
+        "tag": "skk-stream-hk-domain",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/domestic.json",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_hk.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "34-ruleset-34",
+        "tag": "skk-stream-hk-ip",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/domestic.json",
+        "url": "https://ruleset.skk.moe/sing-box/ip/stream_hk.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "35-ruleset-35",
+        "tag": "skk-stream-tw-domain",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/non_ip/direct.json",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_tw.json",
         "download_detour": "🚀 手动切换"
       },
       {
         "type": "remote",
-        "tag": "36-ruleset-36",
+        "tag": "skk-stream-tw-ip",
         "format": "source",
-        "url": "https://ruleset.skk.moe/sing-box/ip/china_ip.json",
+        "url": "https://ruleset.skk.moe/sing-box/ip/stream_tw.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-jp-domain",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_jp.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-jp-ip",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/ip/stream_jp.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-us-domain",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_us.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-us-ip",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/ip/stream_us.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-kr-domain",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_kr.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-kr-ip",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/ip/stream_kr.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-eu-domain",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/non_ip/stream_eu.json",
+        "download_detour": "🚀 手动切换"
+      },
+      {
+        "type": "remote",
+        "tag": "skk-stream-eu-ip",
+        "format": "source",
+        "url": "https://ruleset.skk.moe/sing-box/ip/stream_eu.json",
         "download_detour": "🚀 手动切换"
       }
     ],
     "rules": [
       {
         "rule_set": [
-          "01-REJECT",
-          "02-REJECT",
-          "03-REJECT",
-          "04-REJECT",
-          "05-REJECT"
+          "skk-reject-drop",
+          "skk-reject-non-ip",
+          "skk-reject-domainset",
+          "skk-reject-ip",
+          "dw-ads"
         ],
         "outbound": "block"
       },
       {
         "domain_suffix": [
-          "xn--ngstr-lra8j.com"
-        ],
-        "outbound": "🚀 手动切换"
-      },
-      {
-        "domain_suffix": [
+          "xn--ngstr-lra8j.com",
           "services.googleapis.cn"
         ],
         "outbound": "🚀 手动切换"
       },
       {
         "rule_set": [
-          "29-ruleset-29",
-          "30-ruleset-30",
-          "31-ruleset-31",
-          "32-ruleset-32"
+          "skk-lan",
+          "dw-private",
+          "dw-privateip"
         ],
-        "outbound": "🚀 手动切换"
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
       },
       {
         "rule_set": [
-          "07-ruleset-7",
-          "08-ruleset-8"
+          "skk-telegram-domain",
+          "skk-telegram-ip",
+          "dw-telegramip"
         ],
         "outbound": "📲 电报消息"
       },
       {
+        "rule_set": "dw-ai",
+        "outbound": "🤖 AI合集"
+      },
+      {
+        "rule_set": "dw-youtube",
+        "outbound": "📹 油管视频"
+      },
+      {
         "rule_set": [
-          "21-ruleset-21",
-          "22-ruleset-22"
+          "dw-netflix",
+          "dw-netflixip"
+        ],
+        "outbound": "🎥 奈飞视频"
+      },
+      {
+        "rule_set": "dw-disney",
+        "outbound": "🎥 迪士尼Plus"
+      },
+      {
+        "rule_set": "dw-primevideo",
+        "outbound": "🎬 Prime Video"
+      },
+      {
+        "rule_set": "dw-appletv",
+        "outbound": "🍎 Apple TV+"
+      },
+      {
+        "rule_set": "dw-spotify",
+        "outbound": "🎶 Spotify"
+      },
+      {
+        "rule_set": "dw-tiktok",
+        "outbound": "🎵 Tiktok"
+      },
+      {
+        "rule_set": [
+          "dw-media",
+          "dw-mediaip"
         ],
         "outbound": "🌍 国外媒体"
       },
       {
-        "rule_set": "24-ruleset-24",
+        "rule_set": "dw-games-cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "dw-games",
+        "outbound": "🎮 游戏平台"
+      },
+      {
+        "rule_set": "dw-networktest",
+        "outbound": "📈 网络测试"
+      },
+      {
+        "rule_set": "dw-microsoft-cn",
         "outbound": "Ⓜ️ 微软服务"
       },
       {
         "rule_set": [
-          "27-ruleset-27",
-          "28-ruleset-28"
+          "dw-apple-cn",
+          "dw-google-cn"
         ],
-        "outbound": "🍎 苹果服务"
-      },
-      {
-        "rule_set": "25-AI",
-        "outbound": "🤖 Chatgpt"
+        "outbound": "direct"
       },
       {
         "rule_set": [
-          "06-ruleset-6",
-          "23-ruleset-23",
-          "26-ruleset-26",
-          "33-ruleset-33",
-          "34-ruleset-34",
-          "35-ruleset-35",
-          "36-ruleset-36"
-        ],
-        "outbound": "🎯 国内网络"
-      },
-      {
-        "rule_set": [
-          "17-ruleset-17",
-          "18-ruleset-18"
+          "skk-stream-hk-domain",
+          "skk-stream-hk-ip"
         ],
         "outbound": "🇭🇰 香港节点"
       },
       {
         "rule_set": [
-          "19-ruleset-19",
-          "20-ruleset-20"
+          "skk-stream-tw-domain",
+          "skk-stream-tw-ip"
         ],
         "outbound": "🇹🇼 台湾节点"
       },
       {
         "rule_set": [
-          "13-ruleset-13",
-          "14-ruleset-14"
+          "skk-stream-jp-domain",
+          "skk-stream-jp-ip"
         ],
         "outbound": "🇯🇵 日本节点"
       },
       {
         "rule_set": [
-          "09-ruleset-9",
-          "10-ruleset-10"
+          "skk-stream-us-domain",
+          "skk-stream-us-ip"
         ],
         "outbound": "🇺🇲 美国节点"
       },
       {
         "rule_set": [
-          "15-ruleset-15",
-          "16-ruleset-16"
+          "skk-stream-kr-domain",
+          "skk-stream-kr-ip"
         ],
         "outbound": "🇰🇷 韩国节点"
       },
       {
         "rule_set": [
-          "11-ruleset-11",
-          "12-ruleset-12"
+          "skk-stream-eu-domain",
+          "skk-stream-eu-ip"
         ],
         "outbound": "🏴 其他节点"
       },
       {
-        "rule_set": "25-AI",
-        "outbound": "🤖 Chatgpt"
+        "rule_set": [
+          "dw-cn",
+          "dw-cnip"
+        ],
+        "outbound": "🎯 国内网络"
       },
       {
         "geoip": "cn",
         "outbound": "🎯 国内网络"
+      },
+      {
+        "rule_set": [
+          "dw-proxy",
+          "dw-gfw",
+          "dw-tld-proxy",
+          "skk-global"
+        ],
+        "outbound": "🚀 手动切换"
       }
     ],
     "final": "🐟 漏网之鱼",
